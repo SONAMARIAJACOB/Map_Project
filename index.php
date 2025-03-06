@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive UAE Map</title>
-
-    <!-- Leaflet.js -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <!-- Custom CSS -->
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
-        <!-- Sidebar -->
+
         <div class="sidebar">
             <h2>Locations</h2>
             <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterLocations()">
@@ -27,18 +25,16 @@
                 <option value="family">Family</option>
             </select>
             <ul id="locationList">
-                <!-- Locations will be inserted here dynamically -->
+
             </ul>
         </div>
 
-        <!-- Map -->
         <div id="map"></div>
     </div>
 
     <script>
-        var map = L.map('map').setView([24.466667, 54.316666], 15); // Emirates Palace
+        var map = L.map('map').setView([24.466667, 54.316666], 15);
 
-        // Add map tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
@@ -46,7 +42,6 @@
         let locationsData = [];
         let markers = [];
 
-        // Fetch locations from PHP
         fetch('get_locations.php')
         .then(response => response.json())
         .then(data => {
